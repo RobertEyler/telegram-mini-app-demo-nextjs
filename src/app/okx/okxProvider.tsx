@@ -24,11 +24,11 @@ const OkxProvider = (props: OkxProviderProps) => {
 
     const [oKXUniversalProvider, setOKXUniversalProvider] = useState<OKXUniversalProvider | null>(null);
     useEffect(() => {
+        if (oKXUniversalProvider!=null){
+            return;
+        }
         OKXUniversalProvider.init(props.opts).then(res => setOKXUniversalProvider(res)).catch(err=>console.log(err));
-    }, [props.opts]);
-    WebApp.onEvent("viewportChanged",()=>{
-        OKXUniversalProvider.init(props.opts).then(res => setOKXUniversalProvider(res)).catch(err=>console.log(err));
-    })
+    }, [props.opts,oKXUniversalProvider]);
     return (
         <OkxContext.Provider value={oKXUniversalProvider}>
             {
