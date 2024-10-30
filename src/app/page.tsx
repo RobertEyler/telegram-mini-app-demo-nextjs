@@ -21,9 +21,6 @@ export default function Home() {
     if (WebApp.initDataUnsafe.user) {
       setUserData(WebApp.initDataUnsafe.user as UserData);
     }
-    return ()=>{
-      okProvider?.disconnect();
-    }
   }, []);
   const onclick = async ()=>{
     console.log(okProvider);
